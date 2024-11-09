@@ -8,14 +8,11 @@ class LoadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (Platform.isIOS) {
-      // Indicador de carga para iOS
       return const CupertinoActivityIndicator(
-        radius: 15.0, // Puedes ajustar el tamaño
-      );
+          radius: 20.0, color: CupertinoColors.activeBlue);
     } else {
-      // Indicador de carga para Android (u otras plataformas)
       return const CircularProgressIndicator(
-        strokeWidth: 3.0, // Puedes ajustar el grosor
+        strokeWidth: 3.0,
       );
     }
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_catbreeds/app/constant/cat_breeds_color.dart';
 import 'package:go_router/go_router.dart';
 
 Widget buildAndroidScreen(BuildContext context, GoRouter appRouter) {
@@ -19,7 +20,7 @@ Widget buildAndroidScreen(BuildContext context, GoRouter appRouter) {
       appBarTheme: const AppBarTheme(
         backgroundColor: Colors.purple,
         titleTextStyle: TextStyle(
-          color: Colors.white,
+          color: CatBreedsColors.white,
           fontFamily: 'Adlinnaka',
           fontSize: 20,
           fontWeight: FontWeight.bold,
@@ -32,7 +33,7 @@ Widget buildAndroidScreen(BuildContext context, GoRouter appRouter) {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           foregroundColor: Colors.purple,
-          backgroundColor: Colors.white,
+          backgroundColor: CatBreedsColors.white,
         ),
       ),
       textTheme: TextTheme(
@@ -57,33 +58,36 @@ Widget buildiOSScreen(BuildContext context, GoRouter appRouter) {
   return CupertinoApp.router(
     title: 'Cadbreeds',
     theme: const CupertinoThemeData(
-      primaryColor: Colors.deepPurple,
+      primaryColor: CatBreedsColors.primaryColor,
       scaffoldBackgroundColor: CupertinoColors.systemGroupedBackground,
-      barBackgroundColor: Colors.deepPurple,
+      // barBackgroundColor: CatBreedsColors.primaryColor
       textTheme: CupertinoTextThemeData(
-        textStyle: TextStyle(fontFamily: 'Adlinnaka'),
-        primaryColor: Colors.deepPurple,
+        textStyle: TextStyle(
+          fontFamily: 'Adlinnaka',
+          color: CatBreedsColors.blackColor,
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+        ),
+        primaryColor: CatBreedsColors.primaryColor,
         actionTextStyle: TextStyle(
           fontFamily: 'Adlinnaka',
-          color: Colors.deepPurple,
+          color: CatBreedsColors.primaryColor,
         ),
         navTitleTextStyle: TextStyle(
           fontFamily: 'Adlinnaka',
           fontSize: 20,
           fontWeight: FontWeight.bold,
-          color: Colors.white,
+          color: CatBreedsColors.white,
         ),
         navLargeTitleTextStyle: TextStyle(
-          fontFamily: 'Adlinnaka',
-          fontSize: 34,
-          fontWeight: FontWeight.bold,
-          color: Colors.deepPurple,
-        ),
+            fontFamily: 'Adlinnaka',
+            fontSize: 34,
+            fontWeight: FontWeight.bold,
+            color: CatBreedsColors.primaryColor),
         tabLabelTextStyle: TextStyle(
-          fontFamily: 'Adlinnaka',
-          fontSize: 14,
-          color: Colors.deepPurple,
-        ),
+            fontFamily: 'Adlinnaka',
+            fontSize: 14,
+            color: CatBreedsColors.primaryColor),
       ),
     ),
     debugShowCheckedModeBanner: false,

@@ -1,31 +1,37 @@
-// cadbreeds_text.dart
 import 'dart:io' show Platform;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TextWidget extends StatelessWidget {
   final String text;
+  final double fontSize;
 
-  const TextWidget({super.key, required this.text});
+  const TextWidget({
+    super.key,
+    required this.text,
+    this.fontSize = 18,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Platform.isIOS
         ? Text(
             text,
-            style: const TextStyle(
+            style: TextStyle(
               fontFamily: 'Adlinnaka',
-              fontSize: 18,
-              color: CupertinoColors.activeBlue, // Color para iOS
+              fontSize: fontSize,
+              color: CupertinoColors.black,
             ),
+            textAlign: TextAlign.justify,
           )
         : Text(
             text,
-            style: const TextStyle(
+            style: TextStyle(
               fontFamily: 'Adlinnaka',
-              fontSize: 18,
-              color: Colors.deepPurple, // Color para Android
+              fontSize: fontSize,
+              color: Colors.black,
             ),
+            textAlign: TextAlign.justify,
           );
   }
 }

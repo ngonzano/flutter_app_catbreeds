@@ -1,19 +1,18 @@
 import 'dart:io' show Platform;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_catbreeds/app/constant/cat_breeds_color.dart';
 
 class ScaffoldWidget extends StatelessWidget {
   const ScaffoldWidget({
-    required this.child,
+    required this.widget,
     this.onBackPressed,
     this.title,
-    this.header,
     super.key,
   });
 
   final Widget? title;
-  final Widget? header;
-  final Widget child;
+  final Widget widget;
   final VoidCallback? onBackPressed;
 
   @override
@@ -21,7 +20,7 @@ class ScaffoldWidget extends StatelessWidget {
     return Platform.isIOS
         ? CupertinoPageScaffold(
             navigationBar: CupertinoNavigationBar(
-              backgroundColor: CupertinoColors.activeBlue,
+              backgroundColor: CupertinoColors.systemGrey5,
               middle: title,
               leading: onBackPressed != null
                   ? CupertinoButton(
@@ -29,17 +28,19 @@ class ScaffoldWidget extends StatelessWidget {
                       onPressed: onBackPressed,
                       child: const Icon(
                         CupertinoIcons.back,
-                        color: CupertinoColors.white,
+                        color: CupertinoColors.activeBlue,
                       ),
                     )
                   : null,
             ),
-            child: _buildBody(context),
+            child: widget,
           )
         : Scaffold(
-            backgroundColor: Colors.white,
+            backgroundColor: CatBreedsColors.white,
             appBar: AppBar(
-              backgroundColor: Colors.deepPurple,
+              centerTitle: true,
+              backgroundColor: CatBreedsColors.white,
+              foregroundColor: CatBreedsColors.primaryColor,
               elevation: 0,
               leadingWidth: 36,
               title: title,
@@ -50,33 +51,12 @@ class ScaffoldWidget extends StatelessWidget {
                       padding: EdgeInsets.zero,
                       icon: const Icon(
                         Icons.arrow_back,
-                        color: Colors.white,
+                        color: CatBreedsColors.primaryColor,
                       ),
                     )
                   : null,
             ),
-            body: _buildBody(context),
+            body: widget,
           );
-  }
-
-  Widget _buildBody(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              if (header != null) ...[
-                header!,
-                const SizedBox(height: 20),
-              ],
-              child,
-              const SizedBox(height: 20),
-            ],
-          ),
-        ),
-      ),
-    );
   }
 }

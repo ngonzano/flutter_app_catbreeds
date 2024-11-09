@@ -1,6 +1,7 @@
 import 'dart:io' show Platform;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_catbreeds/app/constant/cat_breeds_color.dart';
 
 class ButtonWidget extends StatelessWidget {
   final String text;
@@ -27,8 +28,8 @@ class ButtonWidget extends StatelessWidget {
               )
             : ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.deepPurple,
-                  backgroundColor: Colors.white,
+                  foregroundColor: CatBreedsColors.primaryColor,
+                  backgroundColor: CatBreedsColors.white,
                   textStyle: const TextStyle(fontFamily: 'Adlinnaka'),
                 ),
                 onPressed: onPressed,
