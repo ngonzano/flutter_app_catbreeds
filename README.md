@@ -44,7 +44,6 @@ dependencies:
   http: ^1.2.2
   freezed_annotation: ^2.4.1
   json_annotation: ^4.9.0
-  shared_preferences: ^2.3.2
   get_it: ^8.0.0
   flutter_dotenv: ^5.2.1
   lottie: ^3.1.3
