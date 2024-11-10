@@ -2,11 +2,20 @@
 
 ![Icono del Proyecto](assets/img/icon.png)
 
+### IOS - Cupertino
 <div style="display: flex; justify-content: space-around;">
   <img src="https://firebasestorage.googleapis.com/v0/b/hl-delivery.appspot.com/o/aaa_pragma%2Fimg_1.png?alt=media&token=3ffffbbc-a5de-4aa0-8cef-fc8fd499a87d" alt="screenshot 1" width="200" />
   <img src="https://firebasestorage.googleapis.com/v0/b/hl-delivery.appspot.com/o/aaa_pragma%2Fimg_2.png?alt=media&token=ac1977df-2cfa-455a-b490-907cbd676d8e" alt="screenshot 2" width="200" />
   <img src="https://firebasestorage.googleapis.com/v0/b/hl-delivery.appspot.com/o/aaa_pragma%2Fimg_3.png?alt=media&token=4c20664b-5906-4fcb-8314-e8504a498d52" alt="screenshot 3" width="200" />
 </div>
+
+### Android - Materal
+<div style="display: flex; justify-content: space-around;">
+  <img src="https://firebasestorage.googleapis.com/v0/b/hl-delivery.appspot.com/o/aaa_pragma%2Fimg_xxx.jpg?alt=media&token=97149f8b-83e0-40f6-a9bd-e0b72a5aa877" alt="screenshot 1" width="200" />
+  <img src="https://firebasestorage.googleapis.com/v0/b/hl-delivery.appspot.com/o/aaa_pragma%2Fimg_xx.jpg?alt=media&token=06bb6067-98d4-4848-a8dd-9e01bfa1ef8a" alt="screenshot 2" width="200" />
+  <img src="https://firebasestorage.googleapis.com/v0/b/hl-delivery.appspot.com/o/aaa_pragma%2Fimg_x.jpg?alt=media&token=b2d6df31-d552-418f-9634-7f1c5a6b7064" alt="screenshot 3" width="200" />
+</div>
+
 
 Este es un proyecto de Flutter que utiliza la API de [TheCatAPI](https://developers.thecatapi.com/) para mostrar imágenes aleatorias de gatos. El proyecto hace uso de varias tecnologías y bibliotecas de Flutter para crear una experiencia fluida tanto en iOS como en Android.
 
