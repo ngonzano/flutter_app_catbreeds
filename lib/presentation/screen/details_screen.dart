@@ -45,9 +45,12 @@ class DetailsScreen extends ConsumerWidget {
                 height: height * 0.5,
                 child: Hero(
                   tag: id,
-                  child: Image.network(
-                    urlImage,
-                    fit: BoxFit.fill,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.network(
+                      urlImage,
+                      fit: BoxFit.fill,
+                    ),
                   ),
                 ),
               ),

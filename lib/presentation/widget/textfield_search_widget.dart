@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_catbreeds/app/constant/cat_breeds_color.dart';
 
 class TextFieldSearch extends StatelessWidget {
   final String placeholder;
@@ -35,7 +34,7 @@ class TextFieldSearch extends StatelessWidget {
             decoration: BoxDecoration(
               color: CupertinoColors.white,
               borderRadius: BorderRadius.circular(8.0),
-              border: Border.all(color: CatBreedsColors.primaryColor),
+              border: Border.all(color: CupertinoColors.systemGrey),
             ),
           )
         : SizedBox(

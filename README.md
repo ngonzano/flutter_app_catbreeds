@@ -1,5 +1,11 @@
 # Cat API Flutter App
 
+![Icono del Proyecto](assets/imgg/icon.png)
+
+![screenshot 1](https://firebasestorage.googleapis.com/v0/b/hl-delivery.appspot.com/o/aaa_pragma%2Fimg_1.png?alt=media&token=3ffffbbc-a5de-4aa0-8cef-fc8fd499a87d)
+![screenshot 2](https://firebasestorage.googleapis.com/v0/b/hl-delivery.appspot.com/o/aaa_pragma%2Fimg_2.png?alt=media&token=ac1977df-2cfa-455a-b490-907cbd676d8e)
+![screenshot 3](https://firebasestorage.googleapis.com/v0/b/hl-delivery.appspot.com/o/aaa_pragma%2Fimg_3.png?alt=media&token=4c20664b-5906-4fcb-8314-e8504a498d52)
+
 Este es un proyecto de Flutter que utiliza la API de [TheCatAPI](https://developers.thecatapi.com/) para mostrar imágenes aleatorias de gatos. El proyecto hace uso de varias tecnologías y bibliotecas de Flutter para crear una experiencia fluida tanto en iOS como en Android.
 
 ## Características

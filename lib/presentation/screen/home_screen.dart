@@ -36,7 +36,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    model(context);
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      model(context);
+    });
+
     _scrollController.addListener(() {
       if (_scrollController.position.userScrollDirection !=
           ScrollDirection.idle) {
@@ -87,8 +91,25 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final size = MediaQuery.sizeOf(context);
 
     return ScaffoldWidget(
-      title: const TextWidget(
-        text: 'Cat Breeds',
+      toolbarHeight: 140,
+      title: Column(
+        children: [
+          const TextWidget(
+            text: 'Cat Breeds',
+          ),
+          const SizedBox(height: 10),
+          TextFieldSearch(
+            placeholder: 'Search Cat breed',
+            textController: textSearchController,
+            onChanged: _onSearchChanged,
+            onPressed: () {
+              textSearchController.clear();
+              setState(() {
+                _filteredItems = [];
+              });
+            },
+          ),
+        ],
       ),
       widget: result.when(
         data: (data) {
@@ -98,28 +119,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             controller: _scrollController,
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 10,
-                  ),
-                  child: TextFieldSearch(
-                    placeholder: 'Search Cat breed',
-                    textController: textSearchController,
-                    onChanged: _onSearchChanged,
-                    onPressed: () {
-                      textSearchController.clear();
-                      setState(() {
-                        _filteredItems = [];
-                      });
-                    },
-                  ),
-                ),
                 if (_filteredItems.isEmpty &&
                     textSearchController.text.isNotEmpty) ...[
                   Card(
                     surfaceTintColor: CatBreedsColors.gray200,
                     shadowColor: CatBreedsColors.gray200,
+                    color: CatBreedsColors.white,
                     elevation: 10,
                     margin: const EdgeInsets.all(20.0),
                     shape: const RoundedRectangleBorder(
@@ -131,7 +136,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       padding: const EdgeInsets.all(20.0),
                       child: Column(
                         children: [
-                          LottieBuilder.asset('assets/json/cat.json'),
+                          LottieBuilder.asset(
+                            'assets/json/cat.json',
+                            width: size.width,
+                            height: size.height * 0.2,
+                          ),
                           const SizedBox(height: 20),
                           const Center(
                             child: TextWidget(
@@ -214,36 +223,39 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                     SizedBox(height: size.height * 0.01),
                                     Hero(
                                       tag: item.id!,
-                                      child: AspectRatio(
-                                        aspectRatio: 1 / 1,
-                                        child: Image.network(
-                                          width: size.width,
-                                          height: size.height * 0.2,
-                                          item.url!,
-                                          fit: BoxFit.fill,
-                                          loadingBuilder: (_, child,
-                                                  loadingProgress) =>
-                                              loadingProgress == null
-                                                  ? child
-                                                  : const Padding(
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                        vertical: 100.0,
-                                                        horizontal: 20,
-                                                      ),
-                                                      child: Center(
-                                                        child: Column(
-                                                          children: [
-                                                            LoadingWidget(),
-                                                            SizedBox(
-                                                                height: 10),
-                                                            TextWidget(
-                                                                text:
-                                                                    'Loading images...')
-                                                          ],
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: AspectRatio(
+                                          aspectRatio: 1 / 1,
+                                          child: Image.network(
+                                            width: size.width,
+                                            height: size.height * 0.2,
+                                            item.url!,
+                                            fit: BoxFit.fill,
+                                            loadingBuilder: (_, child,
+                                                    loadingProgress) =>
+                                                loadingProgress == null
+                                                    ? child
+                                                    : const Padding(
+                                                        padding: EdgeInsets
+                                                            .symmetric(
+                                                          vertical: 100.0,
+                                                          horizontal: 20,
+                                                        ),
+                                                        child: Center(
+                                                          child: Column(
+                                                            children: [
+                                                              LoadingWidget(),
+                                                              SizedBox(
+                                                                  height: 10),
+                                                              TextWidget(
+                                                                  text:
+                                                                      'Loading images...')
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
-                                                    ),
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -289,7 +301,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             children: [
               LoadingWidget(),
               SizedBox(height: 20),
-              TextWidget(text: 'Cargando datos ...')
+              TextWidget(text: 'Loading ...')
             ],
           ),
         ),

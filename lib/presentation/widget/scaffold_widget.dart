@@ -8,54 +8,86 @@ class ScaffoldWidget extends StatelessWidget {
     this.onBackPressed,
     this.title,
     super.key,
+    this.toolbarHeight = 70,
   });
 
   final Widget? title;
   final Widget widget;
   final VoidCallback? onBackPressed;
+  final double toolbarHeight;
 
   @override
   Widget build(BuildContext context) {
     return Theme.of(context).platform == TargetPlatform.iOS
-        ? CupertinoPageScaffold(
-            navigationBar: CupertinoNavigationBar(
-              backgroundColor: CupertinoColors.systemGrey5,
-              middle: title,
-              leading: onBackPressed != null
-                  ? CupertinoButton(
-                      padding: EdgeInsets.zero,
-                      onPressed: onBackPressed,
-                      child: const Icon(
-                        CupertinoIcons.back,
-                        color: CupertinoColors.activeBlue,
+        ? SafeArea(
+            bottom: false,
+            child: CupertinoPageScaffold(
+              child: CustomScrollView(
+                physics: const NeverScrollableScrollPhysics(),
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        top: 20,
+                        bottom: 10,
+                        left: 10,
+                        right: 10,
                       ),
-                    )
-                  : null,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          if (onBackPressed != null)
+                            CupertinoButton(
+                              padding: EdgeInsets.zero,
+                              onPressed: onBackPressed,
+                              child: const Icon(
+                                CupertinoIcons.back,
+                                size: 30,
+                                color: CupertinoColors.activeBlue,
+                              ),
+                            )
+                          else
+                            const SizedBox.shrink(),
+                          const SizedBox(width: 10),
+                          Expanded(child: Center(child: title!)),
+                          onBackPressed == null
+                              ? const SizedBox.shrink()
+                              : const SizedBox(width: 30),
+                          const SizedBox(width: 10),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SliverFillRemaining(child: widget),
+                ],
+              ),
             ),
-            child: widget,
           )
-        : Scaffold(
-            backgroundColor: CatBreedsColors.white,
-            appBar: AppBar(
-              centerTitle: true,
+        : SafeArea(
+            bottom: false,
+            child: Scaffold(
               backgroundColor: CatBreedsColors.white,
-              foregroundColor: CatBreedsColors.primaryColor,
-              elevation: 0,
-              leadingWidth: 36,
-              title: title,
-              toolbarHeight: 70,
-              leading: onBackPressed != null
-                  ? IconButton(
-                      onPressed: onBackPressed,
-                      padding: EdgeInsets.zero,
-                      icon: const Icon(
-                        Icons.arrow_back,
-                        color: CatBreedsColors.primaryColor,
-                      ),
-                    )
-                  : null,
+              appBar: AppBar(
+                centerTitle: true,
+                backgroundColor: CatBreedsColors.white,
+                foregroundColor: CatBreedsColors.primaryColor,
+                elevation: 0,
+                leadingWidth: 36,
+                title: title,
+                toolbarHeight: toolbarHeight,
+                leading: onBackPressed != null
+                    ? IconButton(
+                        onPressed: onBackPressed,
+                        padding: EdgeInsets.zero,
+                        icon: const Icon(
+                          Icons.arrow_back,
+                          color: CatBreedsColors.primaryColor,
+                        ),
+                      )
+                    : null,
+              ),
+              body: widget,
             ),
-            body: widget,
           );
   }
 }
