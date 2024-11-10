@@ -6,7 +6,7 @@ part of 'catbreeds_repository.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$listCatHash() => r'1f97bb736792287d2988654c738640c5d26071bd';
+String _$listCatHash() => r'b6b27112954aabf23ce7c66a65003cf732307e6d';
 
 /// See also [listCat].
 @ProviderFor(listCat)

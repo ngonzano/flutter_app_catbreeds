@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_catbreeds/app/get_it/get_it.dart';
 import 'package:flutter_app_catbreeds/data/model/cat_breeds/catbreeds_model.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -29,7 +30,10 @@ FutureOr<List<CatbreedsModel>> listCat(
       'Content-type': 'application/json',
       'x-api-key': apiKey,
     };
-    final res = await http.get(
+
+    final client = getIt<http.Client>();
+
+    final res = await client.get(
       url,
       headers: headers,
     );

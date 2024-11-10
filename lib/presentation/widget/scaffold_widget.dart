@@ -1,4 +1,3 @@
-import 'dart:io' show Platform;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_catbreeds/app/constant/cat_breeds_color.dart';
@@ -17,7 +16,7 @@ class ScaffoldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Platform.isIOS
+    return Theme.of(context).platform == TargetPlatform.iOS
         ? CupertinoPageScaffold(
             navigationBar: CupertinoNavigationBar(
               backgroundColor: CupertinoColors.systemGrey5,

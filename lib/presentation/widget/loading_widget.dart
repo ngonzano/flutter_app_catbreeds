@@ -1,13 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'dart:io';
 
 class LoadingWidget extends StatelessWidget {
   const LoadingWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.isIOS) {
+    if (Theme.of(context).platform == TargetPlatform.iOS) {
       return const CupertinoActivityIndicator(
           radius: 20.0, color: CupertinoColors.activeBlue);
     } else {

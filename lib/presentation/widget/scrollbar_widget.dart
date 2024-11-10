@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'dart:io' show Platform;
 
 class ScrollBarWidget extends StatelessWidget {
   const ScrollBarWidget({super.key, required this.widget});
@@ -10,9 +9,9 @@ class ScrollBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ScrollController controller = ScrollController();
-    return Platform.isIOS
+    return Theme.of(context).platform == TargetPlatform.iOS
         ? CupertinoScrollbar(
-            thickness: 4.0,
+            thickness: 10.0,
             thumbVisibility: true,
             controller: controller,
             radius: const Radius.circular(8.0),
@@ -29,9 +28,10 @@ class ScrollBarWidget extends StatelessWidget {
             ),
           )
         : Scrollbar(
-            thickness: 4.0,
+            thickness: 10.0,
             radius: const Radius.circular(8.0),
             interactive: true,
+            thumbVisibility: true,
             child: CustomScrollView(
               slivers: [
                 SliverToBoxAdapter(

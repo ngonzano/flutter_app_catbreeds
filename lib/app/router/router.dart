@@ -1,6 +1,6 @@
 import 'package:flutter_app_catbreeds/app/constant/navigator_key.dart';
-import 'package:flutter_app_catbreeds/presentation/details_screen.dart';
-import 'package:flutter_app_catbreeds/presentation/home_screen.dart';
+import 'package:flutter_app_catbreeds/presentation/screen/details_screen.dart';
+import 'package:flutter_app_catbreeds/presentation/screen/home_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -22,6 +22,7 @@ GoRouter appRoute(ref) {
         builder: (context, state) {
           final query = state.uri.queryParameters;
           Map<String, dynamic> data = {
+            'id': query['id'],
             'description': query['description'],
             'country': query['country'],
             'temperament': query['temperament'],

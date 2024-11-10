@@ -1,4 +1,3 @@
-import 'dart:io' show Platform;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_catbreeds/app/constant/cat_breeds_color.dart';
@@ -7,16 +6,18 @@ class TextFieldSearch extends StatelessWidget {
   final String placeholder;
   final TextEditingController textController;
   final Function(String) onChanged;
+  final Function()? onPressed;
 
   const TextFieldSearch(
       {super.key,
       required this.placeholder,
       required this.textController,
-      required this.onChanged});
+      required this.onChanged,
+      this.onPressed});
 
   @override
   Widget build(BuildContext context) {
-    return Platform.isIOS
+    return Theme.of(context).platform == TargetPlatform.iOS
         ? CupertinoSearchTextField(
             onChanged: onChanged,
             controller: textController,
@@ -46,9 +47,7 @@ class TextFieldSearch extends StatelessWidget {
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.search),
                 suffix: IconButton(
-                    onPressed: () {
-                      textController.clear();
-                    },
+                    onPressed: onPressed,
                     icon: const Icon(
                       Icons.close,
                       size: 18,

@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_catbreeds/app/widget/scaffold_widget.dart';
-import 'package:flutter_app_catbreeds/app/widget/scrollbar_widget.dart';
+import 'package:flutter_app_catbreeds/app/utils/widget_animado.dart';
+import 'package:flutter_app_catbreeds/presentation/widget/scaffold_widget.dart';
+import 'package:flutter_app_catbreeds/presentation/widget/scrollbar_widget.dart';
 
-import 'package:flutter_app_catbreeds/app/widget/text_widget.dart';
+import 'package:flutter_app_catbreeds/presentation/widget/text_widget.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:go_router/go_router.dart';
@@ -14,6 +15,7 @@ class DetailsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final id = data['id'];
     final description = data['description'].toString();
     final country = data['country'].toString();
     final temperament = data['temperament'].toString();
@@ -41,9 +43,12 @@ class DetailsScreen extends ConsumerWidget {
               SizedBox(
                 width: width * 0.9,
                 height: height * 0.5,
-                child: Image.network(
-                  urlImage,
-                  fit: BoxFit.fill,
+                child: Hero(
+                  tag: id,
+                  child: Image.network(
+                    urlImage,
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
               SizedBox(
@@ -59,39 +64,68 @@ class DetailsScreen extends ConsumerWidget {
                           height: 20,
                           width: width,
                         ),
-                        const TextWidget(text: 'Description'),
+                        const MoveWidget(
+                          ejeX: -100,
+                          child: TextWidget(text: 'Description'),
+                        ),
                         const SizedBox(height: 5),
-                        TextWidget(
-                          text: description,
-                          fontSize: 16,
+                        MoveWidget(
+                          ejeX: 500,
+                          child: TextWidget(
+                            text: description,
+                            fontSize: 16,
+                          ),
                         ),
                         const SizedBox(height: 20),
-                        const TextWidget(text: 'Country'),
+                        const MoveWidget(
+                          ejeX: -100,
+                          child: TextWidget(text: 'Country'),
+                        ),
                         const SizedBox(height: 5),
-                        TextWidget(
-                          text: country,
-                          fontSize: 16,
+                        MoveWidget(
+                          ejeX: 500,
+                          duration: const Duration(milliseconds: 1750),
+                          child: TextWidget(
+                            text: country,
+                            fontSize: 16,
+                          ),
                         ),
                         const SizedBox(height: 20),
-                        const TextWidget(text: 'Temperament'),
+                        const MoveWidget(
+                            ejeX: -100, child: TextWidget(text: 'Temperament')),
                         const SizedBox(height: 5),
-                        TextWidget(
-                          text: temperament,
-                          fontSize: 16,
+                        MoveWidget(
+                          ejeX: 500,
+                          duration: const Duration(milliseconds: 1500),
+                          child: TextWidget(
+                            text: temperament,
+                            fontSize: 16,
+                          ),
                         ),
                         const SizedBox(height: 20),
-                        const TextWidget(text: 'breed'),
+                        const MoveWidget(
+                            ejeX: -100, child: TextWidget(text: 'breed')),
                         const SizedBox(height: 5),
-                        TextWidget(
-                          text: breed,
-                          fontSize: 16,
+                        MoveWidget(
+                          ejeX: 500,
+                          duration: const Duration(milliseconds: 1250),
+                          child: TextWidget(
+                            text: breed,
+                            fontSize: 16,
+                          ),
                         ),
                         const SizedBox(height: 20),
-                        const TextWidget(text: 'Intelligence'),
+                        const MoveWidget(
+                            ejeX: -100,
+                            child: TextWidget(text: 'Intelligence')),
                         const SizedBox(height: 5),
-                        TextWidget(
-                          text: intelligence,
-                          fontSize: 16,
+                        MoveWidget(
+                          ejeX: 500,
+                          duration: const Duration(milliseconds: 1000),
+                          child: TextWidget(
+                            text: intelligence,
+                            fontSize: 16,
+                          ),
                         ),
                         const SizedBox(height: 20),
                         const TextWidget(text: 'adaptability'),
